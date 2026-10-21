@@ -79,10 +79,11 @@ cd akiyomi
 
 ## Roadmap
 
-- [ ] **v1:** one prefecture end to end: crawl → report, paid single report, eval set
-- [ ] **v1.5:** subsidy matcher, total cost of ownership, town profiles, more prefectures
-- [ ] **v2:** scouting trip planner, document vault, contract and registry explainers, renovation planner
-- [ ] **Later:** municipal tools, risk API, 2050 climate hazard score
+Full plan, milestones and dates: [docs/product/roadmap.md](docs/product/roadmap.md). Design docs live in [docs/](docs/).
+
+- [ ] **0.1.0 MVP "Scout":** one prefecture end to end: listings, hazard map and verdict, plus an agent that learns your preferences, plans a viewing trip (flights, lodging, routes) and sends viewing inquiries you approve
+- [ ] **1.0.0:** paid property report, subsidies and true cost, town profiles, isochrone search, a long-running Scout that reads replies and re-plans, booking handoff with guardrails, three prefectures
+- [ ] **Later:** document vault, contract and registry explainers, renovation planner, municipal tools, risk API, 2050 climate hazard score
 
 ## Data and responsible use
 
