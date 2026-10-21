@@ -3,3 +3,6 @@
 .vscode/
 
 .idea/
+
+# Credential files
+**/.env
