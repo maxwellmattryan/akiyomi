@@ -121,7 +121,9 @@ This is the acceptance test for the whole MVP. If this works end to end with rea
 - EN/JA UI strings from day one (content can lag in JA for the MVP).
 - Eval runner in CI for extraction, geocoding, hazards, planner and guardrails. See [evals](../agent/evals.md).
 - Cost logged per pipeline run and per Scout (model, tokens, cache hits, API calls).
-- Landing page with waitlist, a placeholder price to test willingness to pay, disclaimers ("information, not brokerage"), privacy policy.
+- Hard spend caps: API account limit, global daily cap, one free Scout per account, per-Scout budget. See [ADR 0005](../engineering/decisions/0005-llm-cost-strategy.md).
+- **Invite-only:** landing page with a waitlist; invites go out in batches small enough that the daily cap holds.
+- A placeholder price to test willingness to pay, disclaimers ("information, not brokerage"), privacy policy.
 - A public write-up of the agent design, evals and costs.
 
 ## Success criteria
@@ -131,7 +133,7 @@ This is the acceptance test for the whole MVP. If this works end to end with rea
 | End-to-end | The demo scenario works on production with real listings, real APIs and a real (approved) inquiry |
 | Quality | Eval targets above, published in the write-up |
 | Safety | Zero unapproved external actions, in tests and in production logs |
-| Cost | Median Scout costs under $1 in model + API spend |
+| Cost | Median Scout under $0.10 in model spend; total MVP model spend (including evals) under the $50 ceiling |
 | Users | 25 people outside the team complete a Scout; 5 send at least one inquiry |
 | Learning | We know which tier people say they'd pay for, from the landing page test |
 

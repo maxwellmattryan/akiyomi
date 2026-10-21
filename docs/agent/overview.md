@@ -61,16 +61,7 @@ There is deliberately **no** `send_email` or `book` tool.
 
 ## Models
 
-Use the cheapest model that passes the eval for each job, and pin versions per job so evals are comparable.
-
-| Job | Needs | Starting point |
-| --- | --- | --- |
-| Planning, re-planning, report explanation | Reasoning, structured output | Mid or top tier Claude model |
-| Extraction from HTML/PDF | Structured output, Japanese | Mid tier, with prompt caching on the schema |
-| Translation, classification, reply parsing | Cheap, fast, Japanese | Small tier |
-| Photo analysis (1.0) | Vision | Mid tier |
-
-The choice per job is recorded in an ADR once evals exist. See [architecture](../engineering/architecture.md).
+Every job starts on the cheapest model (Claude Haiku 5.5) and moves up a tier only when its eval shows the cheaper model misses the target. Versions are pinned per job so evals are comparable. Batch, caching and hard spend caps keep the total bounded. The model table, caps and promotion rule are in [ADR 0005](../engineering/decisions/0005-llm-cost-strategy.md).
 
 ## A Scout, step by step
 

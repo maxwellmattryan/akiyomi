@@ -32,8 +32,11 @@ Store sets in the repo (minus anything we're not allowed to redistribute; for th
 
 ## How they run
 
-- **Unit-speed evals** (rules, adapters with fixtures, guardrail logic) run on every PR.
-- **Model evals** (extraction, planner, memory, drafting) run on PRs that touch prompts, models or those stages, and nightly. Results are stored with model id, prompt version and cost so runs are comparable.
+Model evals cost real money, so they run when something they measure changes, never on a schedule. See [ADR 0005](../engineering/decisions/0005-llm-cost-strategy.md#evals-run-on-change-not-on-a-schedule).
+
+- **Deterministic evals** (rules, adapters with fixtures, guardrail logic) run on every PR. They don't call a model.
+- **Model evals** (extraction, planner, memory, drafting) run only on PRs that change prompts, model choice, schemas or that stage's code (CI path filters), plus a manual trigger and before each release. They go through the Batch API. Results are stored with model id, prompt version and cost so runs are comparable.
+- **Model-backed guardrail cases** run on every PR that touches the drafter, executor or guardrail code.
 - **Regression gate:** a PR that drops a metric below target fails CI unless it updates the target with a reason in the PR.
 - **Guardrail evals are never allowed to regress.** No override.
 

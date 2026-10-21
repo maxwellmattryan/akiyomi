@@ -99,10 +99,10 @@ Details in [geospatial](../data/geospatial.md#trip-clustering-and-routing).
 | Steps per plan | 20 |
 | Re-plans per Scout per day | 10 |
 | Provider calls per Scout | 100 |
-| Model tokens per Scout | ~500k |
-| Cost per Scout | $2 hard stop, $1 target median |
+| Model tokens per Scout | ~200k |
+| Cost per Scout | $0.50 hard stop, $0.10 target median |
 
-Hitting a budget pauses the Scout with an explanation, not a silent failure.
+Hitting a budget pauses the Scout with an explanation, not a silent failure. Per-user and global daily caps sit above these; see [ADR 0005](../engineering/decisions/0005-llm-cost-strategy.md#hard-caps).
 
 ## Evals
 
